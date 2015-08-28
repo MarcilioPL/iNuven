@@ -1,0 +1,4 @@
+
+RewriteEngine On
+RewriteRule ^update$ update.php
+RewriteRule ^getip$ getip.php.php
