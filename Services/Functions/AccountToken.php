@@ -20,9 +20,9 @@ function Clean_AccountToken ( $AccountTokenTemplate, $AccountTockenBase64Decode 
 }
 
 
-	function doAccountToken ( $IMEI, $Randomness, $UDID, $Ticket ) {
+function doAccountToken ( $IMEI, $Randomness, $UDID, $Ticket ) {
 	
-		$AccountTokenTemplate = "".
+	$AccountTokenTemplate = "".
 "{
 	\"InternationalMobileEquipmentIdentity\" = \"$IMEI\";
 	\"ActivityURL\" = \"https://albert.apple.com/deviceservices/activity\";
@@ -34,7 +34,7 @@ function Clean_AccountToken ( $AccountTokenTemplate, $AccountTockenBase64Decode 
 }";
 
 
-		return $AccountTokenTemplate;
-	}
+	return $AccountTokenTemplate;
+}
 
 	?>
