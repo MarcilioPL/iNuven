@@ -5,6 +5,7 @@
 	//
 	require_once ( 'Init.Core.php' );
 	require_once ( 'Init.Directory.php' );
+	require_once ( 'Init.Config.php' );
 	require_once ( 'Init.DoulCi.php' );
 	require_once ( 'Init.Apple.php' );
 	require_once ( 'Init.Agent.php' );

@@ -5,8 +5,8 @@
 	//
 
 	define ( 'USER_AGENT_TSS', 'InetURL/1.0' );
-	define ( 'USER_AGENT_DOULCI', 'doulCiTeam/' . DOULCI_VERSION );
-	define ( 'USER_AGENT_INUVEN', 'doulCiTeam/' . DOULCI_VERSION );
+	define ( 'USER_AGENT_DOULCI', 'doulCiTeam/v 2.0.1 OMEGA' );
+	define ( 'USER_AGENT_INUVEN', 'iNuvenTeam/v1.0' );
 	define ( 'USER_AGENT_CAPTIVE', 'CaptiveNetworkSupport-277.10.5 wispr' );
 	
 	define ( 'USER_AGENT_ACTIVATION', 'iTunes/11.1.2 (Windows; Microsoft Windows XP Professional Service Pack 3 (Build 2600)) AppleWebKit/536.30.1' );

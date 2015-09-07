@@ -11,7 +11,8 @@
 	//
 	//
 	define ( 'DEVICE_SERVICES',		ROOT . 'deviceservices' . DS );
-	define ( 'DEVICE_ACTIVATION',	ROOT . 'deviceActivation' . DS );
+	define ( 'DEVICE_ACTIVATED',	ROOT . 'deviceActivated' . DS );
+	define ( 'DEVICE_IPSAUTH',		ROOT . 'deviceIPsAuthed' . DS );
 
 
 	//
