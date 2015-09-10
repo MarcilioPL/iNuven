@@ -29,5 +29,10 @@
 	require_once ( INIT . 'Classes' . DS . 'PlistParser.php' );
 	require_once ( INIT . 'Classes' . DS . 'ShowMsg.php' );
 
+	//
+	//
+	$PParser = new PlistParser ( );
+	$Msg =  new ShowMsg();
+
 
 	?>
