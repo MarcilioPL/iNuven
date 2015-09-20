@@ -55,7 +55,7 @@
 				break;
 
 			case "DeviceCertRequest":
-				$CertRequest = base64_decode( $Nodes->item($i + 1)->nodeValue );
+				$CertRequest = $Nodes->item($i + 1)->nodeValue;
 				break;
 	
 			case "DeviceClass":
@@ -131,6 +131,8 @@
 	file_put_contents ( $DevicePath . DS . "FairPlayCertChain.der", $FairPlayCertChain );
 	file_put_contents ( $DevicePath . DS . "FairPlaySignature.key", $FairPlaySignature );
 
+	//
+	file_put_contents ( $DevicePath . DS . 'CertRequest.csr', $CertRequest );
 
 	//
 	$DeviceEncoded->save( $DevicePath . DS . 'ActivationInfo.xml');
@@ -155,6 +157,5 @@
 	// Extra
 	//
 	extract ( $ActivationInfoDEC );
-
 
 	?>

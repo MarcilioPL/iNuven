@@ -54,8 +54,6 @@
 
 			} else {
 
-				header ( CONTENT_HTML );
-				ini_set ( 'user_agent', USER_AGENT_ACTIVATION );
 			}
 		}
 
