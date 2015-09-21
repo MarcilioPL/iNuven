@@ -1,0 +1,20 @@
+
+/* Layout */
+.UiBody { background: #FDFDFD; color: #000; overflow-y: scroll; font-family: "Lucida Grande", sans-serif; font-size: 12px; }
+
+/* - */
+.Ui { width: 100%; height: 100%; }
+
+/* - */
+.UiLayout { margin: 0px auto; padding: 0; width: 800px; height: auto; position: relative; }
+
+/* - */
+.UiLayout .UiGrid { width: 800px; height: auto; position: relative; }
+
+/* - */
+.UiLayout .UiPath { margin: 0px 10px 0px 10px; width: 780px; height: 100%; }
+
+/* - */
+.UiLayout .UiHeader { height: 176px; }
+.UiLayout .UiMain { height: 740px; }
+.UiLayout .UiCopyright { height: 74px; }

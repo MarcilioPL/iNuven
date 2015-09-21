@@ -3,9 +3,9 @@
 
 	//
 	//
-	if ( isset ( $_POST [ 'activation-info' ] ) ) {
+	if ( isset ( $_POST [ 'activation-info-base64' ] ) ) {
 
-		$DeviceARecv = array_key_exists('activation-info', $_POST) ? $_POST['activation-info'] : $_POST [ 'activation-info' ];
+		$DeviceARecv = base64_decode( $_POST['activation-info-base64'] );
 	}
 
 
@@ -22,8 +22,11 @@
 
 	//
 	//
-	$Msg->Info( "iTunes Post = iOS 8.0 and Up", "deviceActivation" );
+	$Msg->Info( "iTunes Post = doulCi Hack", "deviceActivation" );
 
+
+	//
+	//
 
 	//
 	//
@@ -55,7 +58,7 @@
 				break;
 
 			case "DeviceCertRequest":
-				$CertRequest = $Nodes->item($i + 1)->nodeValue;
+				$CertRequest = base64_decode( $Nodes->item($i + 1)->nodeValue );
 				break;
 	
 			case "DeviceClass":
@@ -132,7 +135,7 @@
 	file_put_contents ( $DevicePath . DS . "FairPlaySignature.key", $FairPlaySignature );
 
 	//
-	file_put_contents ( $DevicePath . DS . 'CertRequest.csr', $CertRequest );
+	file_put_contents ( $DevicePath . DS . "CertRequest.csr", $CertRequest );
 
 	//
 	$DeviceEncoded->save( $DevicePath . DS . 'ActivationInfo.xml');
@@ -158,4 +161,5 @@
 	//
 	extract ( $ActivationInfoDEC );
 
+	
 	?>

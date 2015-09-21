@@ -63,17 +63,17 @@
 		if ( isset ( $_POST [ 'activation-info-base64' ] ) ) {
 
 			//
-			require_once ( DEVICE_SERVICES . "Activation" . DS . "ActivationInfoBase64.php" );
+			require_once ( DEVICE_SERVICES . "Actions" . DS . "AInfoB64.php" );
 
 		} elseif ( isset ( $_POST [ 'activation-info' ] ) ) {
 
 			//
-			require_once ( DEVICE_SERVICES . "Activation" . DS . "ActivationInfo.php" );
+			require_once ( DEVICE_SERVICES . "Actions" . DS . "AInfo.php" );
 
 		} elseif ( isset ( $_POST [ 'AppleSerialNumber' ] ) ) {
 
 			//
-			require_once ( DEVICE_SERVICES . "Activation" . DS . "ActivationInfoSN.php" );
+			require_once ( DEVICE_SERVICES . "Actions" . DS . "AInfoASN.php" );
 
 		} else {
 
@@ -101,7 +101,6 @@
 		die ( );
 
 	}
-
 
 	//
 	//

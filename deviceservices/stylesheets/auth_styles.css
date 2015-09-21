@@ -14,17 +14,15 @@
 body {
     color: rgb(49,49,49);
     font-family: "Helvetica Neue", "Segoe UI", "Tahoma";
-    font-size: 16px;
     text-shadow: 0 1px 0 #fff;
     font-weight: 300;
     line-height: 1.3em;
     background-color: #eaeaea;
     padding: 40px 0;
-   overflow-x: hidden;
+    overflow-x: hidden;
 }
 
 button {
-    font: 16px "Helvetica Neue", "Segoe UI";
     cursor: pointer;
 }
 
@@ -54,7 +52,6 @@ section {
 }
 
 .content {
-    width: 580px;
     position: relative;
 }
 
@@ -65,26 +62,82 @@ section {
 .title {
     position: relative;
     margin-bottom: 16px;
-    min-height: 144px;
 }
 
 .title-text {
     position: absolute;
     bottom: 0; left: 0;
 }
-
+@media only screen and (max-width: 1024px) {
+.product-image {
+    height:310px;
+    left: 480px;
+    position: absolute;
+    top: 0;
+}
+body {
+    font-size: 10px;
+}
+button {
+    font: 10px "Helvetica Neue", "Segoe UI";
+}
+.content {
+    width: 480px;
+}
+.title {
+    min-height: 50px;
+}
+.title-text {
+    font-size: 28px;
+}
+.sectioned-content {
+    padding: 20px 58px;
+}
+form {
+    font-size: 10px;
+}
+form input {
+    font-size: 10px;
+    width: 155px;
+}
+}
+@media only screen and (min-width: 1025px) {
 .product-image {
     position: absolute;
     top: 0;
     left: 580px;
 }
-
+body {
+    font-size: 16px;
+}
+button {
+    font: 16px "Helvetica Neue", "Segoe UI";
+}
+.content {
+    width: 580px;
+}
+.title {
+    min-height: 144px;
+}
+.title-text {
+    font-size: 48px;
+}
+.sectioned-content {
+    padding: 30px 58px;
+}
+form {
+    font-size: 13px;
+}
+form input {
+    font-size: 13px;
+    width: 195px;
+}
+}
 
 /**
  * Typography UI
  */
 .title-text {
-    font-size: 48px;
     line-height: 1em;
     font-weight: 500;
 }
@@ -120,7 +173,6 @@ section {
     /*background-repeat: no-repeat;*/
     border-top: 1px solid #cacaca;
     border-bottom: 1px solid #cacaca;
-    padding: 30px 58px;
     margin-bottom: 30px;
 }
 
@@ -151,7 +203,7 @@ section {
  * Form UI
  */
 form {
-    font-size: 13px;
+    
     font-weight: 400;
 }
 
@@ -163,8 +215,7 @@ form label {
 form input {
     display: block;
     padding: 1px 3px;
-    font-size: 13px;
-    width: 195px;
+   
 }
 
 /***** Modification BEGIN ***************/

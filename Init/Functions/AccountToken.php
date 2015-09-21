@@ -20,21 +20,4 @@ function Clean_AccountToken ( $AccountTokenTemplate, $AccountTockenBase64Decode 
 }
 
 
-	function doAccountToken ( $IMEI, $Randomness, $UDID, $Ticket ) {
-	
-		$AccountTokenTemplate = "".
-"{
-	\"InternationalMobileEquipmentIdentity\" = \"$IMEI\";
-	\"ActivityURL\" = \"https://albert.apple.com/deviceservices/activity\";
-	\"ActivationRandomness\" = \"$Randomness\";
-	\"UniqueDeviceID\" = \"$UDID\";
-	\"CertificateURL\" = \"https://albert.apple.com/deviceservices/certifyMe\";
-	\"PhoneNumberNotificationURL\" = \"https://albert.apple.com/WebObjects/ALUnbrick.woa/wa/phoneHome\";
-	\"WildcardTicket\" = \"$Ticket\";
-}";
-
-
-		return $AccountTokenTemplate;
-	}
-
 	?>
