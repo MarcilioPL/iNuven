@@ -12,6 +12,7 @@
 	$iPhoneActivationFile			= CERTIFICATES . "iPhoneActivation.pem";
 	$iPhoneActivation_privateFile	= CERTIFICATES . "iPhoneActivation_private.pem";
 	$iPhoneActivation_publicFile	= CERTIFICATES . "iPhoneActivation_public.pem";
+
 	$iPhoneDeviceCAFile				= CERTIFICATES . "iPhoneDeviceCA.pem";
 	$iPhoneDeviceCA_privateFile		= CERTIFICATES . "iPhoneDeviceCA_private.pem";
 

@@ -27,9 +27,6 @@
 
 	//
 	//
-
-	//
-	//
 	$DeviceEncoded = new DOMDocument;
 	$DeviceEncoded->loadXML( $DeviceARecv );
 
@@ -58,7 +55,7 @@
 				break;
 
 			case "DeviceCertRequest":
-				$CertRequest = base64_decode( $Nodes->item($i + 1)->nodeValue );
+				$DeviceCert = $Nodes->item($i + 1)->nodeValue;
 				break;
 	
 			case "DeviceClass":
@@ -92,15 +89,15 @@
 			case "ProductType":
 				$ProductType = $Nodes->item($i + 1)->nodeValue;
 				break;
-	
+
 			case "ActivationState":
 				$ActivationState = $Nodes->item($i + 1)->nodeValue;
 				break;
-	
+
 			case "ProductVersion":
 				$ProductVersion = $Nodes->item($i + 1)->nodeValue;
 				break;
-	
+
 			case "BuildVersion":
 				$BuildVersion = $Nodes->item($i + 1)->nodeValue;
 				break;
@@ -112,17 +109,17 @@
 	//
 	$DevicePath = DEVICE_ACTIVATION . $SerialNumber . "_" . $ProductType . "_" . $BuildVersion;
 
+
 	// Check Path
 	//
-	$isDevicePath = Create_Dir ( $DevicePath, $mode = 0755 );
-
+	$isDevicePath = Create_Dir ( $DevicePath, $Mode = 0755 );
 
 
 	// Prepare iTunes Request POST Data.
 	//
 	file_put_contents ( $DevicePath . DS . "TicketRequest.json", json_encode ( $_POST ) );
 	file_put_contents ( $DevicePath . DS . "TicketRequest.serialized", serialize ( $_POST ) );
-	file_put_contents ( $DevicePath . DS . "TicketRequest.txt", $_POST );
+#	file_put_contents ( $DevicePath . DS . "TicketRequest.txt", $_POST );
 
 
 	//
@@ -130,12 +127,11 @@
 	$FairPlayCertChain = $DeviceEncoded->getElementsByTagName('data')->item(1)->nodeValue;
 	$FairPlaySignature = $DeviceEncoded->getElementsByTagName('data')->item(2)->nodeValue;
 
+
 	//
 	file_put_contents ( $DevicePath . DS . "FairPlayCertChain.der", $FairPlayCertChain );
 	file_put_contents ( $DevicePath . DS . "FairPlaySignature.key", $FairPlaySignature );
 
-	//
-	file_put_contents ( $DevicePath . DS . "CertRequest.csr", $CertRequest );
 
 	//
 	$DeviceEncoded->save( $DevicePath . DS . 'ActivationInfo.xml');
@@ -147,6 +143,7 @@
 	$FairPlayCertChain_Der_Content = file_get_contents ( $DevicePath . DS . "FairPlayCertChain.der" );
 	$FairPlayCertChain_Pem_Content = '-----BEGIN CERTIFICATE-----' . PHP_EOL . chunk_split ( base64_encode ( $FairPlayCertChain_Der_Content ), 64, PHP_EOL ) . '-----END CERTIFICATE-----' . PHP_EOL;
 
+
 	//
 	file_put_contents ( $DevicePath . DS . "FairPlayCertChain.pem", $FairPlayCertChain_Pem_Content );
 
@@ -157,9 +154,20 @@
 	$ActivationInfoDEC = $PParser->parse ( $ActivationInfoDEC );
 
 
+	// Get And Store DeviceCertRequest Public Key.
+	//
+	$iPhoneDeviceCR = base64_decode ( $DeviceCert );
+	$iPhoneDeviceVect = openssl_pkey_get_details ( openssl_csr_get_public_key ( $iPhoneDeviceCR ) );
+	$iPhoneDevicePublicKey = $iPhoneDeviceVect [ 'key' ];
+
+	//
+	file_put_contents ( $DevicePath . DS . "DeviceCertRequest.csr", $iPhoneDeviceCR );
+	file_put_contents ( $DevicePath . DS . "DeviceCertRequest.key", $iPhoneDevicePublicKey );
+
+
 	// Extra
 	//
 	extract ( $ActivationInfoDEC );
 
-	
+
 	?>

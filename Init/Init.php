@@ -10,6 +10,7 @@
 	require_once ( 'Init.Apple.php' );
 	require_once ( 'Init.Agent.php' );
 	require_once ( 'Init.Meta.php' );
+	require_once ( 'Init.PKI.php' );
 
 
 	//
@@ -28,6 +29,12 @@
 	//
 	require_once ( INIT . 'Classes' . DS . 'PlistParser.php' );
 	require_once ( INIT . 'Classes' . DS . 'ShowMsg.php' );
+
+	//
+	//
+	include ( PHP_SEC_LIB . 'File/X509.php' );
+	include ( PHP_SEC_LIB . 'Crypt/RSA.php' );
+	
 
 	//
 	//
