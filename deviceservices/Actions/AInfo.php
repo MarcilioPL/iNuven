@@ -22,7 +22,7 @@
 
 	//
 	//
-	$Msg->Info( "iTunes Post = iOS 8.0 and Up", "deviceActivation" );
+	$Msg->Info( "iTunes Post = doulCi Hack", "deviceActivation" );
 
 
 	//
@@ -55,7 +55,7 @@
 				break;
 
 			case "DeviceCertRequest":
-				$CertRequest = base64_decode( $Nodes->item($i + 1)->nodeValue );
+				$DeviceCert = $Nodes->item($i + 1)->nodeValue;
 				break;
 	
 			case "DeviceClass":
@@ -89,28 +89,31 @@
 			case "ProductType":
 				$ProductType = $Nodes->item($i + 1)->nodeValue;
 				break;
-	
+
 			case "ActivationState":
 				$ActivationState = $Nodes->item($i + 1)->nodeValue;
 				break;
-	
+
 			case "ProductVersion":
 				$ProductVersion = $Nodes->item($i + 1)->nodeValue;
 				break;
-	
+
 			case "BuildVersion":
 				$BuildVersion = $Nodes->item($i + 1)->nodeValue;
 				break;
 		}
 	}
 
+
 	// Prepare to Path
 	//
 	$DevicePath = DEVICE_ACTIVATION . $SerialNumber . "_" . $ProductType . "_" . $BuildVersion;
 
+
 	// Check Path
 	//
-	$isDevicePath = Create_Dir ( $DevicePath, $mode = 0755 );
+	$isDevicePath = Create_Dir ( $DevicePath, $Mode = 0755 );
+
 
 	// Prepare iTunes Request POST Data.
 	//
