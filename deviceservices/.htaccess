@@ -1,5 +1,7 @@
 RewriteEngine On
 
-RewriteRule ^deviceActivation$ deviceActivation.php
-RewriteRule ^activity$ deviceActivity.php
+RewriteRule ^activity$ Activity.php
 RewriteRule ^certifyMe$ deviceCertifyMe.php
+RewriteRule ^phoneHome$ PhoneHome.php
+
+RewriteRule ^deviceActivation$ deviceActivation.php

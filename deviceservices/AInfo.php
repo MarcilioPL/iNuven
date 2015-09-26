@@ -134,8 +134,8 @@
 
 
 	//
-	$DeviceEncoded->save( $DevicePath . DS . 'ActivationInfo.xml');
-	$DeviceDecoded->save( $DevicePath . DS . 'ActivationInfoXML.xml');
+	$DeviceEncoded->save( $DevicePath . DS . "ActivationInfo.plist");
+	$DeviceDecoded->save( $DevicePath . DS . "ActivationInfoXML.plist");
 
 
 	//
@@ -150,7 +150,7 @@
 
 	// Prepare ActivationInfoXML.plist File.
 	//
-	$ActivationInfoDEC = file_get_contents ( $DevicePath . DS . "ActivationInfoXML.xml" );
+	$ActivationInfoDEC = file_get_contents ( $DevicePath . DS . "ActivationInfoXML.plist" );
 	$ActivationInfoDEC = $PParser->parse ( $ActivationInfoDEC );
 
 
@@ -168,6 +168,91 @@
 	// Extra
 	//
 	extract ( $ActivationInfoDEC );
+
+
+
+	// This is an extremely needed check :).
+	//
+	$Check_iDevice = Check_iDevice ( $ProductType );
+	$Check_iDevice_Type = Check_iDevice ( $ProductType, true );
+	$Check_iDevice_Name = Check_iDevice ( $ProductType, true, true );
+
+
+	//
+	//
+	if ( $Check_iDevice === true ) {
+
+		$Msg->Info( "Check_iDevice = Look for SIMStatus\r\n", "AInfo" );
+		$Has_SIM = true;
+			
+		if ( array_key_exists ( 'SIMStatus', get_defined_vars ( ) ) ) {
+
+			$Msg->Info( "SIMStatus = Checked " . $SIMStatus, "AInfo" );
+
+			if ( Check_SIMStatus ( $SIMStatus ) === true ) {
+
+				$Msg->Info( "SIMStatus = Normal " . $SIMStatus, "AInfo" );
+				$SIM_OK = true;
+
+			} else {
+
+				$Msg->Info( "SIMStatus = Warning " . $SIMStatus, "AInfo" );
+				$SIM_OK = false;
+
+			}
+
+		} else {
+
+			$Msg->Info( "SIMStatus = Error " . $SIMStatus, "AInfo" );
+			$SIM_OK = false;
+		}
+
+	} else {
+
+		$Msg->Info( "SIMStatus = Default SIM Status to Normal " . $SIMStatus, "AInfo" );
+		$Has_SIM = false;
+		$SIM_OK = false;
+	}
+
+
+	//
+	//
+	if ( ( $ProductType == "iPod1,1" )
+			or ( $ProductType == "iPod2,1" )
+			or ( $ProductType == "iPod3,1" )
+			or ( $ProductType == "iPod4,1" )
+			or ( $ProductType == "iPod5,1" )
+			or ( $ProductType == "iPad2,1" )
+			or ( $ProductType == "iPad2,2" )
+			or ( $ProductType == "iPad2,3" )
+			or ( $ProductType == "iPad2,4" ) ) {
+
+		$Has_SIM = false;
+	}
+
+
+
+	// Get Device Type.
+	//
+	if ( $Check_iDevice_Name != null ) {
+
+		$Msg->Info( "Check_iDevice_Name = Normal", "AInfo" );
+		$iDeviceType = $Check_iDevice_Name;
+
+	} else {
+
+		$Msg->Info( "Check_iDevice_Name = Unknown", "AInfo" );
+		$iDeviceType = "Unknown iDevice";
+	}
+
+
+	// Check SAM & Get Started :).
+	//
+	if ( $Has_SIM == true ) {
+
+		require_once ( DEVICE_SERVICES . 'AInfo_Template.php' );
+	}
+
 
 
 	?>

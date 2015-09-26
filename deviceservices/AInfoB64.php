@@ -134,8 +134,8 @@
 
 
 	//
-	$DeviceEncoded->save( $DevicePath . DS . 'ActivationInfo.xml');
-	$DeviceDecoded->save( $DevicePath . DS . 'ActivationInfoXML.xml');
+	$DeviceEncoded->save( $DevicePath . DS . "ActivationInfo.plist");
+	$DeviceDecoded->save( $DevicePath . DS . "ActivationInfoXML.plist");
 
 
 	//
@@ -150,7 +150,7 @@
 
 	// Prepare ActivationInfoXML.plist File.
 	//
-	$ActivationInfoDEC = file_get_contents ( $DevicePath . DS . "ActivationInfoXML.xml" );
+	$ActivationInfoDEC = file_get_contents ( $DevicePath . DS . "ActivationInfoXML.plist" );
 	$ActivationInfoDEC = $PParser->parse ( $ActivationInfoDEC );
 
 
@@ -168,6 +168,9 @@
 	// Extra
 	//
 	extract ( $ActivationInfoDEC );
+
+
+
 
 
 	?>
