@@ -45,17 +45,33 @@
 			//
 			//
 			if ( ( strpos ( $_SERVER [ 'HTTP_USER_AGENT' ], 'AppleTV' ) !== false )
-				or ( strpos ( $_SERVER [ 'HTTP_USER_AGENT' ], 'iPhone' ) !== false )
+				or ( strpos ( $_SERVER [ 'HTTP_USER_AGENT' ], 'iPhonee' ) !== false )
 				or ( strpos ( $_SERVER [ 'HTTP_USER_AGENT' ], 'iPod' ) !== false )
 				or ( strpos ( $_SERVER [ 'HTTP_USER_AGENT' ], 'iPad' ) !== false ) ) {
 
+				//
+				$Msg->Info( "We have a proxy here", "deviceActivation" );
+
+				//
 				require_once ( DEVICE_SERVICES . 'deviceProxy.php' );
 				die ( );
 
 			} else {
 
+				//
+				$Msg->Info( "Set the correct User-Agent", "deviceActivation" );
+
+				//
+				ini_set ( 'user_agent', USER_AGENT_ACTIVATION );
+
 			}
 		}
+
+
+
+
+
+
 
 
 		//

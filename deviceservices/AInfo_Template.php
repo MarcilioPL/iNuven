@@ -146,7 +146,7 @@
 	// activation-info-base64 decoded version template , activation-info & certify-me-info template.
 	//
 	$Request_Info = '<?xml version="1.0"?>' . "\n";
-	$Request_Info = '<dict>' . "\n";
+	$Request_Info .= '<dict>' . "\n";
 	$Request_Info .= '	<key>ActivationInfoComplete</key>' . "\n";
 	$Request_Info .= '	<true/>' . "\n";
 	$Request_Info .= '	<key>ActivationInfoXML</key>' . "\n";
@@ -167,6 +167,6 @@
 	//
 	file_put_contents ( $DevicePath . DS . "ActivationInfoXML_modified.plist", $Request_Albert );
 	file_put_contents ( $DevicePath . DS . "ActivationInfo_modified.plist", $Request_Info );
-	
+
 
 	?>
